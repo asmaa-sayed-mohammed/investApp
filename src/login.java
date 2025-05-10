@@ -11,7 +11,7 @@ class login extends User{
     }
     public boolean Authenticate() {
         try {
-            File f = new File("User.txt");
+            File f = new File("UserDetails");
             Scanner fileScanner = new Scanner(f);
 
             while(fileScanner.hasNextLine()) {

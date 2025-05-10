@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SignUP {
+public class SignUP implements FilesFunction{
     verifyUser verify = new verifyUser();
     String name;
     String userName;
@@ -27,7 +27,7 @@ public class SignUP {
     }
 
     public List<String[]> readFromFile(){
-        String filePath = "User.txt";
+        String filePath = "UserDetails.txt";
         List<String[]> stockAccounts = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -45,20 +45,21 @@ public class SignUP {
         }
         return stockAccounts;
     }
+
     List<String[]> userData = new ArrayList<>();
     public boolean isSigned() {
         userData = readFromFile();  // Get all user data from file
         for (String[] userRecord : userData) {
             // Check if a user with the same username or email already exists
             if (userRecord[2].equals(userName) || userRecord[0].equals(email)) {
-                return true;  // User already exists
+                return true;  // UserDetails already exists
             }
         }
-        return false;  // User not found, proceed with sign-up
+        return false;  // UserDetails not found, proceed with sign-up
     }
 
     public void saveToFile(){
-        File file = new File("User.txt");
+        File file = new File("UserDetails.txt");
         if (file.exists() && file.canWrite()){
             try (FileWriter writer = new FileWriter(file,true)) {
                 if ((verify.verifyUsername(userName))
@@ -93,4 +94,5 @@ public class SignUP {
             saveToFile();
         }
     }
+
 }

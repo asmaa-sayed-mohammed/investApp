@@ -121,6 +121,5 @@ public class StockAccount implements FilesFunction{
         }else if (choice.equals("2")){
             getStocks(readFromFile());
         }
-
     }
 }
