@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +13,8 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     Scanner scanner = new Scanner(System.in);
     verifyFinGoal verify = new verifyFinGoal();
     String goal = goalName();
-/// choose the goal name
+    List<String[]> result = readFromFile();
+    /// choose the goal name
     public String goalName(){
         System.out.println("Choose the goal name: \n");
         System.out.println("1 - Retirement.\n");
@@ -32,6 +32,7 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
         goalType = scanner.nextLine();
         System.out.println("insert the target amount: ");
         targetAmount = scanner.nextDouble();
+        scanner.nextLine();
         System.out.println("insert the date in this format : dd-MM-yyyy");
         deadline = scanner.nextLine();
         System.out.println("insert the current progress: ");
@@ -45,7 +46,7 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
         if (file.exists() && file.canWrite()){
             try (FileWriter writer = new FileWriter(file, true)){
                 if (verify.verifyGoalType(goalType) && verify.verifyDeadline(deadline)
-                     && verify.verifyCurrentProgress(currentProgress) && verify.verifyTargetAmount(targetAmount)){
+                        && verify.verifyCurrentProgress(currentProgress) && verify.verifyTargetAmount(targetAmount)){
                     writer.write(userName + ", ");
                     writer.write(goal + ", ");
                     writer.write(goalType + ", ");
@@ -65,7 +66,7 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
             System.out.println("File doesn't exist...");
         }
     }
-/// read financial goal data from file
+    /// read financial goal data from file
     @Override
     public List<String[]> readFromFile() {
         String filePath = "FinGoal";
@@ -86,12 +87,12 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     /// Print goal's data
     public void printListGoal(List<String[]> data){
         for (String[] financial : data){
-            System.out.println("User name: " + userName +
-                    ", goal name: " + goalName() +
-                    ", goal type: " + financial[0] +
-                    ", target amount: " + financial[1] +
-                    ", deadline: " + financial[2] +
-                    ", current progress: " + financial[3] + "\n");
+            System.out.println("User name: " + financial[0] +
+                    ", goal name: " + financial[1] +
+                    ", goal type: " + financial[2] +
+                    ", target amount: " + financial[3] +
+                    ", deadline: " + financial[4] +
+                    ", current progress: " + financial[5] + "\n");
         }
     }
     /// print the progress of each goal
@@ -99,21 +100,23 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
         double currentProgress = 0.0;
         for (String[] progress : track){
             // progress = (current / target) * 100
-            double curPro = Double.parseDouble(progress[3]);
-            double targetPro = Double.parseDouble(progress[1]);
+            double curPro = Double.parseDouble(progress[5]);
+            double targetPro = Double.parseDouble(progress[3]);
             currentProgress = (curPro/targetPro) * 100;
-           System.out.println("The progress for " + progress[0] + " is: " + currentProgress + " %");
+            System.out.println("The progress for " + progress[0] + " is: " + String.format("%.2f",currentProgress) + "%" );
         }
     }
     /// implementation of add financial goal
     public void implementAddGoal(){
 
         while (true){
-            String option = scanner.nextLine();
+            System.out.print("Enter your username: ");
+            userName = scanner.nextLine();
             System.out.println("choose: \n");
             System.out.println("1 - Add new goal.\n");
             System.out.println("2 - View list of goals.\n");
             System.out.println("3 - Track your progress.\n");
+            String option = scanner.nextLine();
             if (option.equals("1")){
                 getDetails();
                 saveToFile();
