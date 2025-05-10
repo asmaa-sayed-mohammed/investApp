@@ -1,9 +1,9 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.util.regex.Matcher;
 public  class verifyUser {
     // verify the name length
     public  boolean verifyName(String name){
@@ -56,14 +56,14 @@ public  class verifyUser {
     }
     // verify uniqness of username
     public boolean uniqueUserName(String userName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Mohamed.S\\IdeaProjects\\untitled6\\user.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("User.txt"))) {
             String line;
             //.trim for removing space at end and at beginning
             while ((line = reader.readLine()) != null) {
                 // make the lines about list to check it easier
                 String[] data = line.split(",");
                 // data.length > 1 to confirm that there is a data and it's not an empty data
-                if (data.length > 1 && data[1].trim().equals(userName)) {
+                if (data.length > 1 && data[2].trim().equals(userName)) {
                     System.out.println("This username is used by another user, please choose another one.");
                     return false;
                 }
@@ -74,6 +74,5 @@ public  class verifyUser {
             return false;
         }
     }
-    //check if user exists before signup
 
 }
