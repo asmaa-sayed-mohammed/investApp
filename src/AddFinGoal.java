@@ -13,6 +13,7 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     double currentProgress;
     Scanner scanner = new Scanner(System.in);
     verifyFinGoal verify = new verifyFinGoal();
+    String goal = goalName();
 /// choose the goal name
     public String goalName(){
         System.out.println("Choose the goal name: \n");
@@ -40,7 +41,7 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     @Override
     public void saveToFile(){
         File file = new File("FinGoal");
-        String goal = goalName();
+
         if (file.exists() && file.canWrite()){
             try (FileWriter writer = new FileWriter(file, true)){
                 if (verify.verifyGoalType(goalType) && verify.verifyDeadline(deadline)
@@ -82,7 +83,6 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
         }
         return financialGoals;
     }
-
     /// Print goal's data
     public void printListGoal(List<String[]> data){
         for (String[] financial : data){
@@ -93,6 +93,44 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
                     ", deadline: " + financial[2] +
                     ", current progress: " + financial[3] + "\n");
         }
+    }
+    /// print the progress of each goal
+    public void trackProgress(List<String[]> track){
+        double currentProgress = 0.0;
+        for (String[] progress : track){
+            // progress = (current / target) * 100
+            double curPro = Double.parseDouble(progress[3]);
+            double targetPro = Double.parseDouble(progress[1]);
+            currentProgress = (curPro/targetPro) * 100;
+           System.out.println("The progress for " + progress[0] + " is: " + currentProgress + " %");
+        }
+    }
+    /// implementation of add financial goal
+    public void implementAddGoal(){
+
+        while (true){
+            String option = scanner.nextLine();
+            System.out.println("choose: \n");
+            System.out.println("1 - Add new goal.\n");
+            System.out.println("2 - View list of goals.\n");
+            System.out.println("3 - Track your progress.\n");
+            if (option.equals("1")){
+                getDetails();
+                saveToFile();
+                break;
+            }else if (option.equals("2")){
+                printListGoal(readFromFile());
+                break;
+            }else if (option.equals("3")){
+                trackProgress(readFromFile());
+                break;
+            }else {
+                System.out.println("please insert only 1, 2 or 3");
+            }
+        }
+
+
+
     }
 
 
