@@ -15,7 +15,7 @@ public class Zakatcalculator implements ReportService{
         Portfolio portfolio = Portfolio.getInstance(username);
         List<Asset> assets = portfolio.getAssets();
         double totalZakat = 0.0;
-        if (assets.size() ==0) {
+        if (assets.size() == 0) {
             System.out.println("No assets found");
             return 1;
         }
