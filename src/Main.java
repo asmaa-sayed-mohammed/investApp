@@ -5,7 +5,7 @@ public class Main {
         SignUP s1 = new SignUP();
         s1.implementSignUp();
         String name = s1.getUserName();
-        StockAccount acc1 = new StockAccount(name);
-        acc1.implementStockAccount();
+        StockAccount accc1 = new StockAccount(name);
+        accc1.implementStockAccount();
     }
 }
