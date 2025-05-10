@@ -1,6 +1,5 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -65,9 +64,36 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
             System.out.println("File doesn't exist...");
         }
     }
-
+/// read financial goal data from file
     @Override
     public List<String[]> readFromFile() {
-        return List.of();
+        String filePath = "FinGoal";
+        List<String[]> financialGoals = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] goalData = line.split(",");
+                if (goalData.length > 1 && goalData[0].trim().equals(userName)) {
+                    financialGoals.add(goalData);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Can't read this file.");
+        }
+        return financialGoals;
     }
+
+    /// Print goal's data
+    public void printListGoal(List<String[]> data){
+        for (String[] financial : data){
+            System.out.println("User name: " + userName +
+                    ", goal name: " + goalName() +
+                    ", goal type: " + financial[0] +
+                    ", target amount: " + financial[1] +
+                    ", deadline: " + financial[2] +
+                    ", current progress: " + financial[3] + "\n");
+        }
+    }
+
+
 }
