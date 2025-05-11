@@ -13,7 +13,7 @@ public class RealEstate extends Asset {
         if (choice.equals("1")) {
             return "Investment";
         } else {
-            return "Owned";
+            return " Owned ";
         }
     }
 

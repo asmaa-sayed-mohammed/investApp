@@ -12,13 +12,13 @@ public class SignUP implements FilesFunction{
     Scanner scanner = new Scanner(System.in);
 
     public void getDetails(){
-        System.out.println("Insert your name: ");
+        System.out.println("Insert your name : ");
         name = scanner.nextLine();
-        System.out.println("Insert your userName: ");
+        System.out.println("Insert your userName : ");
         userName = scanner.nextLine();
-        System.out.println("Insert your password: ");
+        System.out.println("Insert your password : ");
         Password = scanner.nextLine();
-        System.out.println("Insert your email: ");
+        System.out.println("Insert your email : ");
         email = scanner.nextLine();
     }
 

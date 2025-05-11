@@ -8,5 +8,6 @@ interface AssetService {
 
     void removeAsset(int var1);
 
+
     boolean isValidIndex(int var1);
 }

@@ -23,7 +23,7 @@ public class assetFactory {
         try {
             date = (new SimpleDateFormat("d-MM-yyyy")).parse(dateStr);
         } catch (ParseException var8) {
-            System.out.println("Invalid date format.");
+            System.out.println("Invalid date format .");
             return null;
         }
 
@@ -33,7 +33,7 @@ public class assetFactory {
                 var10000 = new Stock(name, quantity, price, date);
                 break;
             default:
-                System.out.println("Invalid asset type.");
+                System.out.println("Invalid asset type .");
                 var10000 = null;
         }
 

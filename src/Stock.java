@@ -5,6 +5,6 @@ class Stock extends Asset {
     }
 
     public String toString() {
-        return "[Stock] " + super.toString();
+        return "[ Stock ] " + super.toString();
     }
 }
