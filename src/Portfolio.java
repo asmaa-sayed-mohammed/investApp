@@ -44,7 +44,7 @@ class Portfolio implements Serializable {
 
             oos.close();
         } catch (IOException var6) {
-            System.out.println("Error saving portfolio: " + var6.getMessage());
+            System.out.println("Error -->saving portfolio: " + var6.getMessage());
         }
 
     }

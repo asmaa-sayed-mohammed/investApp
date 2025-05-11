@@ -9,14 +9,14 @@ public class assetFactory {
     }
 
     public static Asset createAsset(int type, Scanner scanner) {
-        System.out.print("Enter Asset Name: ");
+        System.out.print("Enter Asset Name : ");
         String name = scanner.nextLine();
-        System.out.print("Enter Quantity: ");
+        System.out.print("Enter Quantity : ");
         float quantity = scanner.nextFloat();
-        System.out.print("Enter Purchase Price: ");
+        System.out.print("Enter Purchase Price : ");
         float price = scanner.nextFloat();
         scanner.nextLine();
-        System.out.print("Enter Purchase Date (d-MM-yyyy): ");
+        System.out.print("Enter Purchase Date  (d-MM-yyyy): ");
         String dateStr = scanner.nextLine();
 
         Date date;

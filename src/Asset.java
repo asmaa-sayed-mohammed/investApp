@@ -60,6 +60,6 @@ public class Asset implements Serializable {
 
     public String toString() {
         String var10000 = this.assetName;
-        return "Asset Name: " + var10000 + ", Type: " + this.assetType + ", Quantity: " + this.quantity + ", Purchase Price: " + this.purchasePrice + ", Purchase Date: " + (new SimpleDateFormat("yyyy-MM-dd")).format(this.purchaseDate);
+        return "Asset Name:  " + var10000 + ", Type:  " + this.assetType + ", Quantity:  " + this.quantity + ", Purchase Price:  " + this.purchasePrice + ", Purchase Date: " + (new SimpleDateFormat("yyyy-MM-dd")).format(this.purchaseDate);
     }
 }
