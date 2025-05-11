@@ -16,6 +16,8 @@ public class Main {
                 System.out.println("3. Remove Asset");
                 System.out.println("4. View All Assets");
                 System.out.println("5. zakat calculator");
+                System.out.println("6. Add stock account");
+                System.out.println("7. Add financial goal");
                 System.out.println("6. Log out");
 
                 int choice = scanner.nextInt();
@@ -24,12 +26,23 @@ public class Main {
                 List<Asset> assets;
                 switch (choice) {
                     case 1:
-                        System.out.print("Enter Asset Type (1. Stock, 2. RealEstate): ");
+                        System.out.print("Enter Asset Type \n 1. Stock          2. RealEstate          3.Gold\n");
                         int type = scanner.nextInt();
                         scanner.nextLine();
-                        Asset asset = assetFactory.createAsset(type, scanner);
-                        assetService.addAsset(asset);
+                        if (type == 1) {
+
+                            Asset asset = assetFactory.createAsset(type, scanner);
+                            assetService.addAsset(asset);
+                        }else if(type == 2){
+                            Asset asset = assetFactory.createAsset(type, scanner);
+                            assetService.addAsset(asset);
+                        }else if(type == 3){
+
+                            Asset asset = assetFactory.createAsset(type, scanner);
+                            assetService.addAsset(asset);
+                        }
                         break;
+
 
                     case 2:
                         assets = portfolio.getAssets();
@@ -119,8 +132,11 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Welcome to  Invest Wise!");
+
         boolean flag = true;
         while (flag) {
+            System.out.println("________________________\n");
+
             System.out.println("choose one of the following options:");
             System.out.println("1) Login      2) Sign up      3) Quit");
             Scanner in = new Scanner(System.in);
@@ -129,10 +145,11 @@ public class Main {
             switch (choice) {
                 case 1:
                     Scanner scanner = new Scanner(System.in);
-                    System.out.print("Enter your email: ");
+                    System.out.print("Enter your username: ");
                     String username = scanner.nextLine();
                     System.out.print("Enter your password: ");
                     String password = scanner.nextLine();
+                    System.out.print("\n");
                     login a = new login(username, password);
 
                     execute_1(a.Authenticate(), username, a);

@@ -11,7 +11,7 @@ class login extends User{
     }
     public boolean Authenticate() {
         try {
-            File f = new File("UserDetails");
+            File f = new File("User.txt");
             Scanner fileScanner = new Scanner(f);
 
             while(fileScanner.hasNextLine()) {
@@ -38,8 +38,11 @@ class login extends User{
         } catch (FileNotFoundException var7) {
             System.out.println("error retrieving the users, please try again later.");
         }
-       return false;
+        return false;
 
+    }
+    public String getUsername() {
+        return this.uniqueusername;
     }
 
 }
