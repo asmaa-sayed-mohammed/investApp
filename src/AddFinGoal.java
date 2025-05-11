@@ -10,9 +10,9 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     double targetAmount;
     String deadline;
     double currentProgress;
+    String goal;
     Scanner scanner = new Scanner(System.in);
     verifyFinGoal verify = new verifyFinGoal();
-    String goal = goalName();
     List<String[]> result = readFromFile();
     /// constructor for take the userName
     public AddFinGoal(String name){
@@ -107,7 +107,7 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
             double curPro = Double.parseDouble(progress[5]);
             double targetPro = Double.parseDouble(progress[3]);
             currentProgress = (curPro/targetPro) * 100;
-            System.out.println("The progress for " + progress[0] + " is: " + String.format("%.2f",currentProgress) + "%" );
+            System.out.println("The progress for " + progress[0] + " who has goal type = " + progress[2] + " is: " + String.format("%.2f",currentProgress) + "%" );
         }
     }
     /// implementation of add financial goal
@@ -118,18 +118,19 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
             System.out.println("1 - Add new goal.\n");
             System.out.println("2 - View list of goals.\n");
             System.out.println("3 - Track your progress.\n");
+            System.out.println("4 - Go back.\n");
             String option = scanner.nextLine();
             if (option.equals("1")){
+                goal = goalName();
                 getDetails();
                 saveToFile();
-                break;
             }else if (option.equals("2")){
                 printListGoal(readFromFile());
-                break;
             }else if (option.equals("3")){
                 trackProgress(readFromFile());
+            }else if (option.equals("4")){
                 break;
-            }else {
+            } else {
                 System.out.println("please insert only 1, 2 or 3");
             }
         }

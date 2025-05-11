@@ -27,7 +27,7 @@ public class Main {
                 List<Asset> assets;
                 switch (choice) {
                     case 1:
-                        System.out.print("Enter Asset Type \n 1 - Stock.\n    2 - RealEstate.\n     3 - Gold.\n");
+                        System.out.print("Enter Asset Type \n1 - Stock.\n2 - RealEstate.\n3 - Gold.\n");
                         int type = scanner.nextInt();
                         scanner.nextLine();
                         if (type == 1) {
@@ -43,8 +43,6 @@ public class Main {
                             assetService.addAsset(asset);
                         }
                         break;
-
-
                     case 2:
                         assets = portfolio.getAssets();
                         if (assets.isEmpty()) {
@@ -94,7 +92,7 @@ public class Main {
                     case 5:
                         portfolio.getZakatcalculator().calculateZakat();
                         System.out.println("do you want to download Zakat report? ");
-                        System.out.println("1 - Yes.\n    2 - No.\n");
+                        System.out.println("1 - Yes.\n2 - No.\n");
                         Scanner scanner2 = new Scanner(System.in);
                         choice = scanner2.nextInt();
                         if (choice == 1) {
@@ -113,7 +111,6 @@ public class Main {
                         System.out.println("Welcome to Invest Wise!");
                         System.out.println("________________________");
                         System.out.println();
-
                         return;
 
                     default:
@@ -142,7 +139,7 @@ public class Main {
             System.out.println("________________________\n");
 
             System.out.println("choose one of the following options:");
-            System.out.println("1 - Login.\n      2 - Sign up.\n      3 - Quit.\n");
+            System.out.println("1 - Login.\n2 - Sign up.\n3 - Quit.\n");
             Scanner in = new Scanner(System.in);
             int choice = in.nextInt();
 
