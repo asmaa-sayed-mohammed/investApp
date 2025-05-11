@@ -87,7 +87,6 @@ public class SignUP implements FilesFunction{
 
     public void implementSignUp(){
         getDetails();
-        readFromFile();
         if (isSigned()){
             System.out.println("this user was signed before please choose log in..");
         }else {

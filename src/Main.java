@@ -18,15 +18,16 @@ public class Main {
                 System.out.println("5. zakat calculator");
                 System.out.println("6. Add stock account");
                 System.out.println("7. Add financial goal");
-                System.out.println("6. Log out");
+                System.out.println("8. Log out");
 
                 int choice = scanner.nextInt();
                 scanner.nextLine();
+                String user_name = a.getUsername();
 
                 List<Asset> assets;
                 switch (choice) {
                     case 1:
-                        System.out.print("Enter Asset Type \n 1. Stock          2. RealEstate          3.Gold\n");
+                        System.out.print("Enter Asset Type \n 1 - Stock.\n    2 - RealEstate.\n     3 - Gold.\n");
                         int type = scanner.nextInt();
                         scanner.nextLine();
                         if (type == 1) {
@@ -91,21 +92,24 @@ public class Main {
                         }
                         break;
                     case 5:
-
                         portfolio.getZakatcalculator().calculateZakat();
                         System.out.println("do you want to download Zakat report? ");
-                        System.out.println("1)Yes            2)No ");
+                        System.out.println("1 - Yes.\n    2 - No.\n");
                         Scanner scanner2 = new Scanner(System.in);
                         choice = scanner2.nextInt();
                         if (choice == 1) {
                             portfolio.getZakatcalculator().generateReport(Portfolio.getUsername());
                             portfolio.getZakatcalculator().downloadReport(Portfolio.getUsername());
                         }
-
-
                         break;
-
                     case 6:
+                        StockAccount account1 = new StockAccount(user_name);
+                        account1.implementStockAccount();
+                        break;
+                    case 7:
+                        AddFinGoal financial_goal = new AddFinGoal(user_name);
+                        financial_goal.implementAddGoal();
+                    case 8:
                         System.out.println("Welcome to Invest Wise!");
                         System.out.println("________________________");
                         System.out.println();
@@ -138,7 +142,7 @@ public class Main {
             System.out.println("________________________\n");
 
             System.out.println("choose one of the following options:");
-            System.out.println("1) Login      2) Sign up      3) Quit");
+            System.out.println("1 - Login.\n      2 - Sign up.\n      3 - Quit.\n");
             Scanner in = new Scanner(System.in);
             int choice = in.nextInt();
 
