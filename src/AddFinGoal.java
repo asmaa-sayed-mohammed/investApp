@@ -14,6 +14,10 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     verifyFinGoal verify = new verifyFinGoal();
     String goal = goalName();
     List<String[]> result = readFromFile();
+    /// constructor for take the userName
+    public AddFinGoal(String name){
+        this.userName = name;
+    }
     /// choose the goal name
     public String goalName(){
         System.out.println("Choose the goal name: \n");
@@ -110,8 +114,6 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     public void implementAddGoal(){
 
         while (true){
-            System.out.print("Enter your username: ");
-            userName = scanner.nextLine();
             System.out.println("choose: \n");
             System.out.println("1 - Add new goal.\n");
             System.out.println("2 - View list of goals.\n");
