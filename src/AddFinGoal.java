@@ -115,6 +115,7 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
         }
         return financialGoals;
     }
+
     /**
      * Prints the list of financial goals stored for the current user.
      *
