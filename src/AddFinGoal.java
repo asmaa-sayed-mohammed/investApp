@@ -13,7 +13,6 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     String goal;
     Scanner scanner = new Scanner(System.in);
     verifyFinGoal verify = new verifyFinGoal();
-    List<String[]> result = readFromFile();
     /// constructor for take the userName
     public AddFinGoal(String name){
         this.userName = name;
@@ -101,7 +100,7 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     }
     /// print the progress of each goal
     public void trackProgress(List<String[]> track){
-        double currentProgress = 0.0;
+        double currentProgress;
         for (String[] progress : track){
             // progress = (current / target) * 100
             double curPro = Double.parseDouble(progress[5]);
