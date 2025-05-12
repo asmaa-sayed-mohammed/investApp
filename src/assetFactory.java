@@ -24,6 +24,7 @@ public class assetFactory {
      * @param scanner A {@link Scanner} object used to collect user input.
      * @return A new {@link Asset} object of the specified type, or {@code null} if input is invalid.
      */
+
     public static Asset createAsset(int type, Scanner scanner) {
         System.out.print("Enter Asset Name: ");
         String name = scanner.nextLine();
