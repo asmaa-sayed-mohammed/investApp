@@ -17,6 +17,11 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     String goal;
     Scanner scanner = new Scanner(System.in);
     verifyFinGoal verify = new verifyFinGoal();
+    /**
+     * Constructs a new {@code AddFinGoal} object with the given username.
+     *
+     * @param name The name of the user.
+     */
     /// constructor for take the userName
     public AddFinGoal(String name){
         this.userName = name;
