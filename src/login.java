@@ -1,14 +1,18 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-//new
 /**
- * The {@code login} class handles user authentication by verifying credentials against a stored user file.
+ * The {@code Login} class handles user authentication by verifying credentials against a stored user file.
  * It extends the {@link User} class and uses a local text file ("User.txt") for login validation.
+ * <p>
+ * This class is responsible for checking if the entered email and password match any entry in the user file,
+ * and if so, it authenticates the user and stores the unique username for further operations.
+ * </p>
  */
 class login extends User{
     /**
-     * Constructs a new {@code login} instance with the provided email and password.
+     * Constructs a new {@code Login} instance with the provided email and password.
+     * This constructor initializes the email and password of the user.
      *
      * @param e The user's email address.
      * @param p The user's password.
