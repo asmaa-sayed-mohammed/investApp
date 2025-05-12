@@ -185,6 +185,7 @@ public void editAsset(int index, Asset asset) {
         RealEstate real = (RealEstate) asset;
          real.setType();
     }
+
     if (asset instanceof Gold) {
         Gold gold = (Gold) asset;
          gold.setType();
