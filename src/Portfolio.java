@@ -11,7 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Date;
-
+/**
+ * The {@code Portfolio} class manages a user's collection of financial assets such as stocks, real estate, and gold.
+ * It handles adding, editing, removing, loading, and saving assets to a user-specific file.
+ * This class also supports integration with a {@link Zakatcalculator} for zakat computations.
+ *
+ * <p>Implements the Singleton design pattern — one portfolio per user session.</p>
+ */
 class Portfolio implements Serializable {
     private static Portfolio port;
     private static String username;
@@ -20,14 +26,21 @@ class Portfolio implements Serializable {
     String uSername;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private Zakatcalculator zakatcalculator;
-
+    /**
+     * Private constructor to initialize the portfolio for a specific user.
+     * Loads assets from a file or creates a new portfolio if the file doesn't exist.
+     *
+     * @param usernameKey The user's email used to derive a unique file name.
+     */
     private Portfolio(String usernameKey) {
         username = usernameKey.replaceAll("@.*", "");
         zakatcalculator = new Zakatcalculator(username);
         FILE_NAME = new File(username + "_portfolio.txt");
         assets = loadAssets();
     }
-
+    /**
+     * Saves the current list of assets to the user's portfolio file.
+     */
     private void saveAssets() {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.FILE_NAME));
@@ -50,7 +63,11 @@ class Portfolio implements Serializable {
         }
 
     }
-
+    /**
+     * Loads the list of assets from the user's portfolio file.
+     *
+     * @return A list of {@link Asset} objects; empty list if file not found or error occurs.
+     */
     private List<Asset> loadAssets() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE_NAME));
@@ -74,7 +91,13 @@ class Portfolio implements Serializable {
             return new ArrayList();
         }
     }
-
+    /**
+     * Returns the singleton instance of the portfolio for the specified user.
+     * If it doesn't exist, it is created.
+     *
+     * @param usernameKey The email or identifier of the user.
+     * @return The singleton {@code Portfolio} instance.
+     */
     public static Portfolio getInstance(String usernameKey) {
         if (port == null) {
             port = new Portfolio(usernameKey);
@@ -83,17 +106,29 @@ class Portfolio implements Serializable {
         return port;
     }
 
-
+    /**
+     * Returns a list of the current user's assets.
+     *
+     * @return A copy of the list of {@link Asset} objects.
+     */
     public List<Asset> getAssets() {
         return new ArrayList(this.assets);
     }
-
+    /**
+     * Adds an asset to the portfolio and persists the updated list.
+     *
+     * @param asset The {@link Asset} to add.
+     */
     public void addAsset(Asset asset) {
         this.assets.add(asset);
         this.saveAssets();
         System.out.println("Asset added successfully.");
     }
-
+    /**
+     * Removes an asset from the portfolio and updates the saved file.
+     *
+     * @param asset The {@link Asset} to remove.
+     */
     public void removeAsset(Asset asset) {
         this.assets.remove(asset);
         this.saveAssets();
@@ -104,6 +139,12 @@ class Portfolio implements Serializable {
 //      this.assets.set(index, newAsset);
 //     this.saveAssets();
 //  }
+
+    /**
+     * Edits an existing asset in the portfolio by allowing the user to update its fields interactively.
+     *
+     * @param index The index of the asset to edit.
+     */
 public void editAsset(int index, Asset asset) {
     if (index < 0 || index >= assets.size()) {
         System.out.println("Invalid index.");
@@ -158,10 +199,19 @@ public void editAsset(int index, Asset asset) {
 
 
 
-
+    /**
+     * Returns the username associated with the current portfolio.
+     *
+     * @return The username derived from the email prefix.
+     */
     public static String getUsername() {
         return username;
     }
+    /**
+     * Returns the {@link Zakatcalculator} instance associated with this portfolio.
+     *
+     * @return A {@code Zakatcalculator} used for zakat computations.
+     */
     public Zakatcalculator getZakatcalculator() {
         return zakatcalculator;
     }
