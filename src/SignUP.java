@@ -27,7 +27,7 @@ public class SignUP implements FilesFunction{
     }
 
     public List<String[]> readFromFile(){
-        String filePath = "UserDetails.txt";
+        String filePath = "User.txt";
         List<String[]> stockAccounts = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -51,7 +51,7 @@ public class SignUP implements FilesFunction{
         userData = readFromFile();  // Get all user data from file
         for (String[] userRecord : userData) {
             // Check if a user with the same username or email already exists
-            if (userRecord[2].equals(userName) || userRecord[0].equals(email)) {
+            if ( userRecord[0].equals(email)) {
                 return true;  // UserDetails already exists
             }
         }
@@ -59,7 +59,7 @@ public class SignUP implements FilesFunction{
     }
 
     public void saveToFile(){
-        File file = new File("UserDetails.txt");
+        File file = new File("User.txt");
         if (file.exists() && file.canWrite()){
             try (FileWriter writer = new FileWriter(file,true)) {
                 if ((verify.verifyUsername(userName))
@@ -73,7 +73,7 @@ public class SignUP implements FilesFunction{
                     writer.write(userName + ", ");
                     writer.write(name + "\n");
                     System.out.println("-------------------------------------------------------------------\n");
-                    System.out.println("SignedUP successfully");
+                    System.out.println("SignedUP successfully so now lets login to start new adventure! ");
                 }else {
                     System.out.println("Insert a valid data...");
                 }

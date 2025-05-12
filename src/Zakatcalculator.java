@@ -79,7 +79,7 @@ public class Zakatcalculator implements ReportService{
                         goldQuantity += asset.getAssetamount();
                     }
                 } else {
-                    writer.write(asset.getAssetName() + " - Zakah can't be calculated from it as it's owned not for investment.\n");
+                    writer.write(asset.getAssetName() + " Zakah can't be calculated from it as it's owned not for investment.\n");
                 }
             }
             if (goldQuantity >= 85) {

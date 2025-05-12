@@ -2,7 +2,7 @@
 interface AssetService {
     void addAsset(Asset var1);
 
-    void editAsset(int var1, Asset var2);
+    void editAsset(int var1);
 
     void removeAsset(int var1);
 

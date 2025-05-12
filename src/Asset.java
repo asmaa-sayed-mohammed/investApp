@@ -9,6 +9,8 @@ public class Asset implements Serializable {
     private float quantity;
     private Date purchaseDate;
     private float purchasePrice;
+    private double amount ;
+    public String investType;
 
     public Asset(String assetName, String assetType, float quantity, float purchasePrice, Date purchaseDate) {
         this.assetName = assetName;
@@ -16,6 +18,8 @@ public class Asset implements Serializable {
         this.quantity = quantity;
         this.purchaseDate = purchaseDate;
         this.purchasePrice = purchasePrice;
+        this.amount = 0;
+        this.investType="Investment";
     }
 
     public String getAssetName() {
@@ -57,9 +61,20 @@ public class Asset implements Serializable {
     public String getAssetType() {
         return this.assetType;
     }
+    public double getAssetamount() {
 
+        return this.amount;
+    }
+
+    public void setAssetamount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getInvestType() {
+        return this.investType;
+    }
     public String toString() {
         String var10000 = this.assetName;
-        return "Asset Name: " + var10000 + ", Type: " + this.assetType + ", Quantity: " + this.quantity + ", Purchase Price: " + this.purchasePrice + ", Purchase Date: " + (new SimpleDateFormat("yyyy-MM-dd")).format(this.purchaseDate);
+        return "Asset Name: " + var10000 + ", Type: " + this.assetType + ", Quantity: " + this.quantity + ", Purchase Price: " + this.purchasePrice + ", Purchase Date: " + (new SimpleDateFormat("yyyy-MM-dd")).format(this.purchaseDate) + ", Asset Amount: " + this.amount +", Asset Investment type: "+this.investType ;
     }
 }

@@ -56,7 +56,7 @@ public  class verifyUser {
     }
     // verify uniqness of username
     public boolean uniqueUserName(String userName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("UserDetails.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("User.txt"))) {
             String line;
             //.trim for removing space at end and at beginning
             while ((line = reader.readLine()) != null) {

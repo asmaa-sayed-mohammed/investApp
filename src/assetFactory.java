@@ -21,22 +21,42 @@ public class assetFactory {
 
         Date date;
         try {
-            date = (new SimpleDateFormat("d-MM-yyyy")).parse(dateStr);
+            date = new SimpleDateFormat("d-MM-yyyy").parse(dateStr);
+
+            Date today = new Date();
+            if (date.after(today)) {
+                System.out.println("Invalid date: " + dateStr + " is in the future. Please enter a past or today's date.");
+                return null;
+            }
+
         } catch (ParseException var8) {
             System.out.println("Invalid date format.");
             return null;
         }
 
-        Stock var10000;
+
+        Asset var1;
         switch (type) {
             case 1:
-                var10000 = new Stock(name, quantity, price, date);
+                var1 = new Stock(name, quantity, price, date);
                 break;
+                case 2:
+                    System.out.print("is this Real Estate: 1)Investment          2)Owned ");
+                    String choice2 = scanner.nextLine();
+                    var1 = new RealEstate(name, quantity, price, date ,choice2);
+                    break;
+                    case 3:
+                        System.out.print("is this Real Estate: 1)Investment          2)Owned ");
+                        String choice3 = scanner.nextLine();
+                        System.out.print("how many grams do you have?: ");
+                        String choice4 = scanner.nextLine();
+                        var1 = new Gold(name, quantity, price, date , choice3, Integer.parseInt(choice4));
+                        break;
             default:
                 System.out.println("Invalid asset type.");
-                var10000 = null;
+                var1 = null;
         }
 
-        return var10000;
+        return var1;
     }
 }

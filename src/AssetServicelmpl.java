@@ -1,6 +1,6 @@
 // Source code is decompiled from a .class file using FernFlower decompiler.
 import java.util.List;
-
+import java.util.Scanner;
 class AssetServiceImpl implements AssetService {
     private Portfolio portfolio;
     private final List<Asset> assets;
@@ -22,14 +22,14 @@ class AssetServiceImpl implements AssetService {
     public void removeAsset(int index) {
         this.portfolio.removeAsset((Asset)this.portfolio.getAssets().get(index));
     }
+    public void editAsset(int index) {
+        Asset oldAsset = portfolio.getAssets().get(index);
 
-    public void editAsset(int index, Asset newAsset) {
-        if (this.isValidAsset(newAsset)) {
-            this.portfolio.editAsset(index, newAsset);
+        if (this.isValidAsset(oldAsset)) {
+            this.portfolio.editAsset(index, oldAsset);
         } else {
             System.out.println("Invalid asset.");
         }
-
     }
 
     private boolean isValidAsset(Asset asset) {

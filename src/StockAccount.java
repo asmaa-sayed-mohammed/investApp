@@ -64,7 +64,7 @@ public class StockAccount implements FilesFunction{
     }
     public void saveToFile(){
         String platForm = getDetails();
-        File file = new File("C:\\Users\\Mohamed.S\\IdeaProjects\\untitled10\\StockDetails");
+        File file = new File("C:\\Users\\Lenovo\\IdeaProjects\\investApp\\StockDetails");
         if (file.exists() && file.canWrite()){
             try (FileWriter writer = new FileWriter(file, true)){
                 if (verify.verifyEmail(account) && verify.verifyPassword(password)){
@@ -86,7 +86,7 @@ public class StockAccount implements FilesFunction{
     }
 
     public List<String[]> readFromFile(){
-        String filePath = "C:\\Users\\Mohamed.S\\IdeaProjects\\untitled10\\StockDetails";
+        String filePath = "C:\\Users\\Lenovo\\IdeaProjects\\investApp\\StockDetails";
         List<String[]> stockAccounts = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -120,6 +120,9 @@ public class StockAccount implements FilesFunction{
             saveToFile();
         }else if (choice.equals("2")){
             getStocks(readFromFile());
+            if (readFromFile().isEmpty()){
+                System.out.println("there is no Stock account ");
+            }
         }
     }
 }
