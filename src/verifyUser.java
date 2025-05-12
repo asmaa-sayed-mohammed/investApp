@@ -4,8 +4,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+/**
+ * The {@code verifyUser} class provides utility methods for validating user input during
+ * registration or login, including name, email, password, and username format checks.
+ * It also checks for uniqueness of usernames in a stored file.
+ */
 public  class verifyUser {
     // verify the name length
+    /**
+     * Verifies that the provided name is less than 100 characters.
+     *
+     * @param name the user's name
+     * @return {@code true} if the name is valid, otherwise {@code false}
+     */
     public  boolean verifyName(String name){
         if (name.length() < 100 ){
             System.out.println("true name\n");
@@ -15,6 +26,13 @@ public  class verifyUser {
             return false;
         }
     }
+    /**
+     * Validates the structure and length of an email address.
+     * Ensures it matches a general email pattern and is under 100 characters.
+     *
+     * @param email the user's email address
+     * @return {@code true} if the email is valid, otherwise {@code false}
+     */
     // verify the email structure and length
     public  boolean verifyEmail(String email){
         // verify that email = user@domain.com
@@ -30,6 +48,13 @@ public  class verifyUser {
         }
     }
     // verify password structure and length
+    /**
+     * Validates the structure and strength of a password.
+     * Requires at least one uppercase letter and one number or special character.
+     *
+     * @param password the user's password
+     * @return {@code true} if the password is strong and valid, otherwise {@code false}
+     */
     public  boolean verifyPassword(String password){
         // should contain at least one capital letter
         boolean hasUppercase = password.matches(".*[A-Z].*");
@@ -44,6 +69,12 @@ public  class verifyUser {
             return false;
         }
     }
+    /**
+     * Verifies that the provided username is less than 50 characters.
+     *
+     * @param userName the user's username
+     * @return {@code true} if the username is valid, otherwise {@code false}
+     */
     // verify userName length
     public  boolean verifyUsername(String userName){
         if (userName.length() < 50){
@@ -55,6 +86,12 @@ public  class verifyUser {
         }
     }
     // verify uniqness of username
+    /**
+     * Checks whether the given username is unique by scanning the "User.txt" file.
+     *
+     * @param userName the username to check
+     * @return {@code true} if the username is not taken, otherwise {@code false}
+     */
     public boolean uniqueUserName(String userName) {
         try (BufferedReader reader = new BufferedReader(new FileReader("User.txt"))) {
             String line;
