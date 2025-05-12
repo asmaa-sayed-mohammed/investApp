@@ -26,8 +26,13 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
     public AddFinGoal(String name){
         this.userName = name;
     }
+    /**
+     * Prompts the user to choose a goal name from a predefined list.
+     *
+     * @return The selected goal name as a string.
+     */
     /// choose the goal name
-    ///
+
     public String goalName(){
         System.out.println("Choose the goal name: \n");
         System.out.println("1 - Retirement.\n");
@@ -39,6 +44,10 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
             return "Wealth Accumulation";
         }
     }
+    /**
+     * Collects detailed input from the user regarding their financial goal.
+     * Includes type, target amount, deadline, and current progress.
+     */
     /// insert the details of your goal
     public void getDetails(){
         System.out.println("insert the goal type: ");
@@ -51,6 +60,10 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
         System.out.println("insert the current progress: ");
         currentProgress = scanner.nextDouble();
     }
+    /**
+     * Saves the financial goal details to the file named "FinGoal".
+     * Validates inputs before writing to the file.
+     */
     /// Save goal details in file
     @Override
     public void saveToFile(){
@@ -79,6 +92,11 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
             System.out.println("File doesn't exist...");
         }
     }
+    /**
+     * Reads financial goal data from the "FinGoal" file.
+     *
+     * @return A list of financial goal data arrays for the current user.
+     */
     /// read financial goal data from file
     @Override
     public List<String[]> readFromFile() {
@@ -97,6 +115,11 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
         }
         return financialGoals;
     }
+    /**
+     * Prints the list of financial goals stored for the current user.
+     *
+     * @param data A list of financial goal data arrays.
+     */
     /// Print goal's data
     public void printListGoal(List<String[]> data){
         for (String[] financial : data){
@@ -108,6 +131,11 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
                     ", current progress: " + financial[5] + "\n");
         }
     }
+    /**
+     * Tracks and prints the progress of each goal based on current and target amounts.
+     *
+     * @param track A list of financial goal data arrays.
+     */
     /// print the progress of each goal
     public void trackProgress(List<String[]> track){
         double currentProgress;
@@ -119,6 +147,13 @@ public class AddFinGoal extends verifyFinGoal implements FilesFunction{
             System.out.println("The progress for " + progress[0] + " who has goal type = " + progress[2] + " is: " + String.format("%.2f",currentProgress) + "%" );
         }
     }
+    /**
+     * Provides the interactive menu for the user to:
+     * 1. Add a new goal
+     * 2. View list of goals
+     * 3. Track progress
+     * 4. Exit
+     */
     /// implementation of add financial goal
     public void implementAddGoal(){
 
