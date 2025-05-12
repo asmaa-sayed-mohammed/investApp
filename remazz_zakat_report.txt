@@ -1,0 +1,2 @@
+jj (Stock, purchased on: Tue Oct 15 00:00:00 EET 2024) - Zakah not due yet (still 158 days left)
+ii (Stock, purchased on: Sun Oct 15 00:00:00 EET 2023) - Zakah calculated from it (owned for 573 days)
